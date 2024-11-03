@@ -35,7 +35,7 @@ export class LocalStorageService {
   }
 
   addTodo(todo: Todo): void {
-    const todos = this.todosSubject.value;
+    const todos = this.todosSubject.value || [];
     todos.push(todo);
     this.saveOnLocalStorage(this.LOCALKEY, todos);
     this.todosSubject.next(todos);
