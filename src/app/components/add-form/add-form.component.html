@@ -1,0 +1,19 @@
+<div class="card shadow p-4 bg-neutral">
+  <form
+    class="p-4 flex flex-wrap justify-between items-center"
+    (ngSubmit)="addTask()"
+  >
+    <div class="flex w-full">
+      <input
+        type="text"
+        placeholder="Task"
+        name="title"
+        [(ngModel)]="title"
+        class="input input-bordered flex-grow mr-2"
+      />
+      <button type="submit" class="btn">
+        <i class="fa-solid fa-plus"></i> Add Todo
+      </button>
+    </div>
+  </form>
+</div>

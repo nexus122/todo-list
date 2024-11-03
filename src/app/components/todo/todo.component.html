@@ -1,0 +1,22 @@
+<div class="flex shadow gap-2 justify-between items-center p-4 bg-neutral">
+  <div class="flex gap-4 items-center w-full">
+    <input
+      type="checkbox"
+      [checked]="checked"
+      class="checkbox"
+      (click)="checkTodo(id)"
+    />
+    <input
+      type="text"
+      class="input w-full flex-grow text-lg"
+      [(ngModel)]="title"
+      (change)="changeTitle(id, title)"
+    />
+    <button
+      class="btn btn-circle btn-outline btn-error"
+      (click)="deleteTodo(id)"
+    >
+      <i class="fa-solid fa-trash"></i>
+    </button>
+  </div>
+</div>
