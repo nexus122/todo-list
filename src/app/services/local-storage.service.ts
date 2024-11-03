@@ -37,14 +37,12 @@ export class LocalStorageService {
   addTodo(todo: Todo): void {
     const todos = this.todosSubject.value || [];
     todos.push(todo);
-    this.saveOnLocalStorage(this.LOCALKEY, todos);
-    this.todosSubject.next(todos);
+    this.updateObservable(todos);
   }
 
   removeTodo(id: string): void {
     const todos = this.todosSubject.value.filter((todo) => todo.id !== id);
-    this.saveOnLocalStorage(this.LOCALKEY, todos);
-    this.todosSubject.next(todos);
+    this.updateObservable(todos);
   }
 
   updateObservable(todos: any[]): void {
