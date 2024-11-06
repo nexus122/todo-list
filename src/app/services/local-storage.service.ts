@@ -29,22 +29,6 @@ export class LocalStorageService {
     return todos ? JSON.parse(todos) : null;
   }
 
-  loadInitialTodos(): void {
-    const todos = this.getFromLocalStorage(this.LOCALKEY);
-    this.todosSubject.next(todos);
-  }
-
-  addTodo(todo: Todo): void {
-    const todos = this.todosSubject.value || [];
-    todos.push(todo);
-    this.updateObservable(todos);
-  }
-
-  removeTodo(id: string): void {
-    const todos = this.todosSubject.value.filter((todo) => todo.id !== id);
-    this.updateObservable(todos);
-  }
-
   updateObservable(todos: any[]): void {
     this.saveOnLocalStorage(this.LOCALKEY, todos);
     this.todosSubject.next(todos);

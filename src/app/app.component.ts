@@ -4,6 +4,7 @@ import { TodoComponent } from './components/todo/todo.component';
 import { AddFormComponent } from './components/add-form/add-form.component';
 import { LocalStorageService } from './services/local-storage.service';
 import { NgIf, NgFor } from '@angular/common';
+import { TodolistService } from './services/todolist.service';
 
 @Component({
   selector: 'app-root',
@@ -13,12 +14,15 @@ import { NgIf, NgFor } from '@angular/common';
   styleUrl: './app.component.scss',
 })
 export class AppComponent {
-  constructor(private local: LocalStorageService) {}
+  constructor(
+    private local: LocalStorageService,
+    private todo: TodolistService
+  ) {}
   public todoList: any[] = [];
   public activeTab: boolean = true;
 
   ngOnInit(): void {
-    this.local.loadInitialTodos();
+    this.todo.loadInitialTodos();
     this.local.todos$.subscribe((value) => {
       this.todoList = value;
       if (!this.activeTab) {
@@ -33,6 +37,6 @@ export class AppComponent {
 
   setActiveTab(tab: boolean): void {
     this.activeTab = tab;
-    tab ? this.local.loadInitialTodos() : this.filterCheckedTodos();
+    tab ? this.todo.loadInitialTodos() : this.filterCheckedTodos();
   }
 }

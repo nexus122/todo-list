@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { LocalStorageService } from '../../services/local-storage.service';
 import { Todo } from '../../services/local-storage.service';
+import { TodolistService } from '../../services/todolist.service';
 @Component({
   selector: 'app-add-form',
   standalone: true,
@@ -12,7 +12,7 @@ import { Todo } from '../../services/local-storage.service';
 export class AddFormComponent {
   title: string = '';
   checked: boolean = false;
-  constructor(private local: LocalStorageService) {}
+  constructor(private todo: TodolistService) {}
 
   addTask() {
     let todo: Todo = {
@@ -20,7 +20,7 @@ export class AddFormComponent {
       title: this.title,
       checked: this.checked,
     };
-    this.local.addTodo(todo);
+    this.todo.addTodo(todo);
     this.clearForm();
   }
 
