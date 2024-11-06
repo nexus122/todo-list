@@ -1,0 +1,16 @@
+<div role="tablist" class="tabs tabs-bordered">
+  <a
+    role="tab"
+    (click)="setActiveTab(true)"
+    class="tab"
+    [class.tab-active]="activeTab"
+    >All</a
+  >
+  <a
+    role="tab"
+    (click)="setActiveTab(false)"
+    class="tab"
+    [class.tab-active]="!activeTab"
+    >Pending</a
+  >
+</div>

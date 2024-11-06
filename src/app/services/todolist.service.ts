@@ -7,8 +7,10 @@ import { Todo } from './local-storage.service';
 export class TodolistService {
   constructor(private local: LocalStorageService) {}
   loadInitialTodos(): void {
-    const todos = this.local.getFromLocalStorage(this.local.LOCALKEY);
-    this.local.updateObservable(todos);
+    if (typeof window !== 'undefined') {
+      const todos = this.local.getFromLocalStorage(this.local.LOCALKEY);
+      this.local.updateObservable(todos);
+    }
   }
 
   addTodo(todo: Todo): void {

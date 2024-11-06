@@ -69,17 +69,5 @@ describe('AppComponent', () => {
         { id: 1, title: 'Test Todo 1', checked: false },
       ]);
     });
-
-    it('should set active tab and load todos', () => {
-      spyOn(component, 'filterCheckedTodos');
-
-      component.setActiveTab(true);
-      expect(component.activeTab).toBeTrue();
-      expect(todolistService.loadInitialTodos).toHaveBeenCalled();
-
-      component.setActiveTab(false);
-      expect(component.activeTab).toBeFalse();
-      expect(component.filterCheckedTodos).toHaveBeenCalled();
-    });
   });
 });

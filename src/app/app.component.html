@@ -3,29 +3,13 @@
   <div class="flex flex-col flex-wrap gap-4 mt-12">
     <app-add-form></app-add-form>
     <div class="form-control mt-6">
-      <div role="tablist" class="tabs tabs-bordered">
-        <a
-          role="tab"
-          (click)="setActiveTab(true)"
-          class="tab"
-          [class.tab-active]="activeTab"
-          >All</a
-        >
-        <a
-          role="tab"
-          (click)="setActiveTab(false)"
-          class="tab"
-          [class.tab-active]="!activeTab"
-          >Pending</a
-        >
-      </div>
+      <app-tabs (activeTabChange)="setActiveTab($event)"></app-tabs>
       <div class="flex flex-col gap-2 shadow-sm">
         <ng-container *ngIf="todoList && todoList.length > 0">
           <app-todo
             *ngFor="let todo of todoList"
             [id]="todo.id"
             [title]="todo.title"
-            [description]="todo.description"
             [checked]="todo.checked"
           ></app-todo>
         </ng-container>
