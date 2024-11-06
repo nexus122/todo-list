@@ -22,12 +22,13 @@ import { TabsComponent } from './components/tabs/tabs.component';
   styleUrl: './app.component.scss',
 })
 export class AppComponent {
+  public todoList: Todo[] = [];
+  public activeTab: boolean = true;
+
   constructor(
     private local: LocalStorageService,
     private todo: TodolistService
   ) {}
-  public todoList: Todo[] = [];
-  public activeTab: boolean = true;
 
   ngOnInit(): void {
     this.todo.loadInitialTodos();
@@ -44,7 +45,6 @@ export class AppComponent {
   }
 
   setActiveTab(tab: boolean): void {
-    console.log(tab);
     tab ? this.todo.loadInitialTodos() : this.filterCheckedTodos();
   }
 }

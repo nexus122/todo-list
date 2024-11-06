@@ -11,25 +11,25 @@ export interface Todo {
   providedIn: 'root',
 })
 export class LocalStorageService {
-  private todosSubject: BehaviorSubject<any[]>;
-  public todos$: Observable<any[]>;
+  private todosSubject: BehaviorSubject<Todo[]>;
+  public todos$: Observable<Todo[]>;
   public LOCALKEY = 'todos';
 
   constructor() {
-    this.todosSubject = new BehaviorSubject<any[]>([]);
+    this.todosSubject = new BehaviorSubject<Todo[]>([]);
     this.todos$ = this.todosSubject.asObservable();
   }
 
-  saveOnLocalStorage(key: string, value: any): void {
+  saveOnLocalStorage(key: string, value: Todo[]): void {
     localStorage.setItem(key, JSON.stringify(value));
   }
 
-  getFromLocalStorage(key: string): any {
+  getFromLocalStorage(key: string): Todo[] | null {
     const todos = localStorage.getItem(key);
     return todos ? JSON.parse(todos) : null;
   }
 
-  updateObservable(todos: any[]): void {
+  updateObservable(todos: Todo[]): void {
     this.saveOnLocalStorage(this.LOCALKEY, todos);
     this.todosSubject.next(todos);
   }
