@@ -1,5 +1,4 @@
 import { Component, Input } from '@angular/core';
-import { LocalStorageService } from '../../services/local-storage.service';
 import { FormsModule } from '@angular/forms';
 import { TodolistService } from '../../services/todolist.service';
 @Component({
@@ -10,11 +9,8 @@ import { TodolistService } from '../../services/todolist.service';
   styleUrl: './todo.component.scss',
 })
 export class TodoComponent {
-  constructor(
-    private local: LocalStorageService,
-    private todo: TodolistService
-  ) {}
-  @Input() id: string = '';
+  constructor(private todo: TodolistService) {}
+  @Input() id: number = 0;
   @Input() title: string = '';
   @Input() description: string = '';
   @Input() checked: boolean = false;
