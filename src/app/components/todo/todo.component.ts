@@ -1,11 +1,13 @@
 import { Component, Input } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { TodolistService } from '../../services/todolist.service';
+import { NgIf } from '@angular/common';
+import { Todo } from '../../services/local-storage.service';
 
 @Component({
   selector: 'app-todo',
   standalone: true,
-  imports: [FormsModule],
+  imports: [FormsModule, NgIf],
   templateUrl: './todo.component.html',
   styleUrl: './todo.component.scss',
 })
@@ -14,6 +16,7 @@ export class TodoComponent {
   @Input() title: string = '';
   @Input() description: string = '';
   @Input() checked: boolean = false;
+  @Input() subtasks: Todo[] = [];
 
   constructor(private todo: TodolistService) {}
 

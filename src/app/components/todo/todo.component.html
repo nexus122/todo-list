@@ -20,3 +20,14 @@
     </button>
   </div>
 </div>
+<ng-container *ngIf="subtasks.length > 0">
+  <div class="ml-8">
+    <app-todo
+      *ngFor="let subtask of subtasks"
+      [id]="subtask.id"
+      [title]="subtask.title"
+      [checked]="subtask.checked"
+      [subtasks]="subtask.subtasks"
+    ></app-todo>
+  </div>
+</ng-container>
